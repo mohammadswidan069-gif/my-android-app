@@ -1,0 +1,6 @@
+{
+  "name": "كود فورس عربي",
+  "description": "منصة تفاعلية لحل مسائل كود فورس بالعربية مع شرح تفصيلي للحلول وخطوات التفكير، محرر أكواد C++، تصحيح أخطاء ذكي بالذكاء الاصطناعي، اختبارات وتحديات يومية ولوحة متصدرين.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
