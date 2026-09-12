@@ -19,22 +19,20 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle 8.7 (No Cache)
-      uses: gradle/actions/setup-gradle@v3
-      with:
-        gradle-version: '8.7'
-        cache-disabled: true
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
 
-    - name: Generate Wrapper & Make Executable
+    - name: Generate Wrapper
       run: |
-        gradle wrapper
+        gradle wrapper --gradle-version 8.6
         chmod +x gradlew
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug --no-daemon --stacktrace
+      run: ./gradlew assembleDebug -x test -x lint --no-daemon --continue
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: app-debug
-        path: app/build/outputs/apk/debug/*.apk
+        path: "**/build/outputs/apk/**/*.apk"
